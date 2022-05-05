@@ -1,0 +1,22 @@
+server:
+  port: 6666
+  servlet:
+    context-path: /api/authentication
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        namespace: ${service.nacos.namespace}
+        server-addr: ${service.nacos.host}:${service.nacos.port}
+  application:
+    name: ${service.authentication.name}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

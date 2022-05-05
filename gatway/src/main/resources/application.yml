@@ -1,0 +1,31 @@
+spring:
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: oms
+          uri: lb://${service.oms.name}
+          predicates:
+            - Path=${service.oms.path}
+        - id: ums
+          uri: lb://${service.ums.name}
+          predicates:
+            - Path=${service.ums.path}
+        - id: pms
+          uri: lb://${service.pms.name}
+          predicates:
+            - Path=${service.pms.path}
+    nacos:
+      discovery:
+        server-addr: ${service.nacos.host}:${service.nacos.port}
+        namespace: ${service.nacos.namespace}
+  application:
+    name: ${service.gatway.name}

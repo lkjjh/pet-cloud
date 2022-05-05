@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 120.27.231.72:1111
+        prefix: config
+        namespace: 949b625c-8689-4162-95d5-df16bbc47d5a
+        file-extension: yml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 9010
+  servlet:
+    context-path: /api/ums

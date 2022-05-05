@@ -1,0 +1,35 @@
+package com.al.pet.service;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+/**
+ * token业务类
+ *
+ * @author Al
+ * @version 1.0
+ **/
+@Service
+@FeignClient("${service.authentication.name}")
+public interface TokenService {
+    /**
+     * 检查请求是否需要token验证
+     *
+     * @param path 请求路径
+     * @return boolean
+     */
+    @GetMapping("/api/authentication/checkPath/{path}")
+    Boolean checkPath(@RequestParam("path") @PathVariable String path);
+
+    /**
+     * 检查token是否是有效的
+     *
+     * @param token token
+     * @return boolean
+     */
+    @GetMapping("/api/authentication/checkToken/{token}")
+    Boolean checkToken(@RequestParam("token") @PathVariable String token);
+}

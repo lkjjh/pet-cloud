@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 120.27.231.72:1111
+        namespace: 949b625c-8689-4162-95d5-df16bbc47d5a
+        file-extension: yml
+        prefix: config
+
+server:
+  port: 8081

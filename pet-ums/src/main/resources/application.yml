@@ -1,0 +1,21 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  application:
+    name: ${service.ums.name}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${datasource.url}
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: ${datasource.username}
+    password: ${datasource.password}
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${service.nacos.host}:${service.nacos.port}
+        namespace: ${service.nacos.namespace}
+
+datasource:
+  db: pet-ums

@@ -1,0 +1,24 @@
+server:
+  port: 6379
+  servlet:
+    context-path: /api/redis
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ${service.redis.name}
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${service.nacos.host}:${service.nacos.port}
+        namespace: ${service.nacos.namespace}
+  redis:
+    password: ${redis.password}
+    port: ${redis.port}
+    host: ${redis.host}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

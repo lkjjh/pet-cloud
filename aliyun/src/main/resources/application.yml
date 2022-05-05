@@ -1,0 +1,20 @@
+server:
+  port: 9020
+  servlet:
+    context-path: /api/aliyun
+spring:
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        namespace: ${service.nacos.namespace}
+        server-addr: ${service.nacos.host}:${service.nacos.port}
+  application:
+    name: ${service.aliyun.name}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
